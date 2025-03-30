@@ -6,25 +6,25 @@
 </head>
 <body>
     <h1>Formulário de Anamnese</h1>
-    <form>
+    <form onsubmit="return false" id="anamnese">
+        <fieldset>
+            <legend>Atendimento</legend>
+            <p>
+                <label for="data_hora_atendimento">Data/hora:</label>
+                <input type="datetime-local" id="data_hora_atendimento" name="data_hora_atendimento">
+                <button id="usar_hora_agora">Usar hora atual</button>
+            </p>
+        </fieldset>
         <fieldset>
             <legend>Identificação</legend>
-            <p>
-                <label for="nome">Nome Civil:</label>
-                <input type="text" id="nome" name="nome">
-            </p>
-
-            <p>
-                <label for="nome_social">Nome Social:</label>
-                <input type="text" id="nome_social" name="nome_social">
-            </p>
-
-            <p>
-                <label for="data_nascimento">Data de nascimento:</label>
-                <input type="date" id="data_nascimento" name="data_nascimento">
-            </p>
-            <p>Idade: <output id="idade" name="idade">calcular...</output></p>
-
+            <p><label for="nome">Nome Civil:</label>
+                <input type="text" id="nome" name="nome"></p>
+            <p><label for="nome_social">Nome Social:</label>
+                <input type="text" id="nome_social" name="nome_social"></p>
+            <p><label for="data_nascimento">Data de nascimento:</label>
+                <input type="date" id="data_nascimento" name="data_nascimento"></p>
+            <p><label for="idade">Idade: </label>
+                <input type="text" id="idade" name="idade"></p>
             <p>
                 <label for="sexo">Sexo:</label>
                 <select id="sexo">
@@ -34,7 +34,6 @@
                     <option>Ignorado</option>
                 </select>
             </p>
-
             <p>
                 <label for="genero">Gênero:</label>
                 <input type="text" id="genero" name="genero" list="generos" value="">
@@ -123,13 +122,13 @@
             </p>
 
             <p>
-                <label for="procedencia">Procedencia:</label>
-                <textarea id="procedencia" name="procedencia"></textarea>
+                <label for="procedencia">Procedência:</label>
+                <input type="text" id="procedencia" name="procedencia"></input>
             </p>
 
             <p>
-                <label for="residencia">Residencia:</label>
-                <textarea id="residencia" name="residencia"></textarea>
+                <label for="residencia">Residência:</label>
+                <input type="text" id="residencia" name="residencia"></input>
             </p>
         </fieldset>
 
@@ -147,37 +146,45 @@
                 <label for="alergias">Alergias:</label><br>
                 <textarea id="alergias" name="alergias"></textarea>
             </p>
-
             <p>
                 <label for="medicamentos">Medicamentos:</label><br>
                 <textarea id="medicamentos" name="medicamentos"></textarea>
             </p>
-
             <p>
-                <label for="doencas_anteriores">Doenças anteriores:</label><br>
+                <label for="doencas_anteriores">Doenças/traumas anteriores:</label><br>
                 <textarea id="doencas_anteriores" name="doencas_anteriores"></textarea>
             </p>
-
             <p>
                 <label for="procedimentos">Cirurgias/transfusões realizadas:</label><br>
-                <textarea id="procedimentos" name="procedimentos"></textarea><br><br>
+                <textarea id="procedimentos" name="procedimentos"></textarea>
+            </p>
+            <p>
+                <label for="imunizacoes">Imunizações:</label><br>
+                <textarea id="imunizacoes" name="imunizacoes"></textarea>
+            </p>
+            <p>
+                <label for="gpac">Gestações, Partos, Abortos, Cesarianas</label>
+                <input type="text" id="gpac" name="gpac">
             </p>
         </fieldset>
 
         <fieldset>
             <legend>Antecedentes Sociais</legend>
             <p>
-                <label for="renda">Renda:</label><br>
-                <textarea id="renda" name="renda"></textarea>
+                <label for="sobre_moradia">Condições de moradia:</label> <br>
+                <textarea id="sobre_moradia" name="sobre_moradia"></textarea>
             </p>
             <p>
-                <label for="sobre_ocupacao">Condições trabalho/escola:</label><br>
+                <label for="sobre_renda">Renda:</label><br>
+                <textarea id="sobre_renda" name="sobre_renda"></textarea>
+            </p>
+            <p>
+                <label for="sobre_ocupacao">Trabalho/escola:</label><br>
                 <textarea id="sobre_ocupacao" name="sobre_ocupacao"></textarea>
             </p>
             <p>
-                <label for="sobre_moradia">Condições de moradia:</label> <br>
-                <textarea id="sobre_moradia" name="sobre_moradia"></textarea>
-
+                <label for="sobre_familia">Família:</label><br>
+                <textarea id="sobre_familia" name="sobre_familia"></textarea>
             </p>
         </fieldset>
 
@@ -201,7 +208,30 @@
 
         <fieldset>
             <legend>Interrogatório Sintomatológico</legend>
-
+            <p>
+                <label for="isda_nega_febre">Nega febre</label>
+                <input type="checkbox" id="isda_nega_febre" name="isda_nega_febre">
+            </p>
+            <p>
+                <label for="isda_nega_astenia">Nega astenia</label>
+                <input type="checkbox" id="isda_nega_astenia" name="isda_nega_astenia">
+            </p>
+            <p>
+                <label for="isda_nega_alteracao_peso">Nega alteração de peso</label>
+                <input type="checkbox" id="isda_nega_alteracao_peso" name="isda_nega_alteracao_peso">
+            </p>
+            <p>
+                <label for="isda_nega_sudorese">Nega sudorese</label>
+                <input type="checkbox" id="isda_nega_sudorese" name="isda_nega_sudorese">
+            </p>
+            <p>
+                <label for="isda_nega_calafrios">Nega calafrios</label>
+                <input type="checkbox" id="isda_nega_calafrios" name="isda_nega_calafrios">
+            </p>
+            <p>
+                <label for="isda_nega_caibras">Nega cãibras</label>
+                <input type="checkbox" id="isda_nega_caibras" name="isda_nega_caibras">
+            </p>
             ...
         </fieldset>
 
@@ -219,91 +249,17 @@
 
             <p>IMC calculado: <output name="imc" id="imc">...</output></p>
 
+            <p>
+                <label for="circ_abdominal">Circunferência Abdominal (cm):</label>
+                <input type="number" id="circ_abdominal" name="circ_abdominal">
+            </p>
         </fieldset>
+        <button id="exportar">Exportar</button>
     </form>
     <div>
         <p>Referências:</p>
         <ul><li>Porto - Exame Clínico 8ª ed.</li></ul>
     </div>
-    <script>
-        const dataNascimentoInput = document.getElementById('data_nascimento');
-        const idadeOutput = document.getElementById('idade');
-        const pesoInput = document.getElementById('peso');
-        const alturaInput = document.getElementById('altura');
-        const imcOutput = document.getElementById('imc');
-
-        function calcularIdade(dataNascimento) {
-            const dataNascimentoObj = new Date(dataNascimento);
-            const hoje = new Date();
-
-            let idadeAnos = hoje.getFullYear() - dataNascimentoObj.getFullYear();
-            let idadeMeses = hoje.getMonth() - dataNascimentoObj.getMonth();
-            let idadeDias = hoje.getDate() - dataNascimentoObj.getDate();
-
-            if (idadeMeses < 0 || (idadeMeses === 0 && idadeDias < 0)) {
-                idadeAnos--;
-                idadeMeses += 12;
-            }
-
-            if (idadeDias < 0) {
-                const ultimoDiaDoMesAnterior = new Date(hoje.getFullYear(), hoje.getMonth(), 0).getDate();
-                idadeDias += ultimoDiaDoMesAnterior;
-                idadeMeses--;
-            }
-
-            return {
-                anos: idadeAnos,
-                meses: idadeMeses,
-                dias: idadeDias,
-            };
-        }
-
-        function calcularTextoIdade() {
-            const idade = calcularIdade(dataNascimentoInput.value);
-
-            idadeOutput.innerText = `${idade.anos} anos, ${idade.meses} meses e ${idade.dias} dias`;
-        }
-
-        function calcularIMC() {
-            const peso = parseFloat(pesoInput.value);
-            const altura = parseFloat(alturaInput.value);
-
-            if (!isNaN(peso) && !isNaN(altura) && altura > 0) {
-                const imc = peso / (altura * altura);
-                imcOutput.innerText = imc.toFixed(2);
-                // Adiciona cores com base nos valores de referência
-                imcOutput.style.color = null;
-                const idade = calcularIdade(dataNascimentoInput.value).anos
-                if (idade >= 18 && idade < 60) {
-                    if (imc < 18.5) {
-                        imcOutput.style.color = 'blue'; // Abaixo do peso
-                    } else if (imc < 25) {
-                        imcOutput.style.color = 'green'; // Peso normal
-                    } else if (imc < 30) {
-                        imcOutput.style.color = 'orange'; // Sobrepeso
-                    } else {
-                        imcOutput.style.color = 'red'; // Obesidade
-                    }
-                } else {
-                    // todo idoso
-                }
-            } else {
-                imcOutput.innerText = '...';
-            }
-        }
-
-        function calcularDados() {
-            calcularTextoIdade()
-            calcularIMC()
-        }
-
-
-        dataNascimentoInput.addEventListener('input', calcularDados);
-        dataNascimentoInput.addEventListener('change', calcularDados);
-        pesoInput.addEventListener('input', calcularDados);
-        pesoInput.addEventListener('change', calcularDados);
-        alturaInput.addEventListener('input', calcularDados);
-        alturaInput.addEventListener('change', calcularDados);
-    </script>
+    <script src="es2_anamnese.js"></script>
 </body>
 </html>
