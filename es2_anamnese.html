@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>Formulário de Anamnese</h1>
+    <form>
+        <fieldset>
+            <legend>Identificação</legend>
+            <p>
+                <label for="nome">Nome Civil:</label>
+                <input type="text" id="nome" name="nome">
+            </p>
+
+            <p>
+                <label for="nome_social">Nome Social:</label>
+                <input type="text" id="nome_social" name="nome_social">
+            </p>
+
+            <p>
+                <label for="data_nascimento">Data de nascimento:</label>
+                <input type="date" id="data_nascimento" name="data_nascimento">
+            </p>
+            <p>Idade: <output id="idade" name="idade">calcular...</output></p>
+
+            <p>
+                <label for="sexo">Sexo:</label>
+                <select id="sexo">
+                    <option>Masculino</option>
+                    <option>Feminino</option>
+                    <option>Não-binário</option>
+                    <option>Ignorado</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="genero">Gênero:</label>
+                <input type="text" id="genero" name="genero" list="generos" value="">
+
+                <datalist id="generos">
+                    <option>Homem cis</option>
+                    <option>Mulhes cis</option>
+                    <option>Homem trans</option>
+                    <option>Mulher trans</option>
+                    <option>Não-binário</option>
+                    <option>Não declarado</option>
+                </datalist>
+            </p>
+
+            <p>
+                <label for="cor">Raça/cor:</label>
+                <select id="cor">
+                    <option>Não declarada</option>
+                    <option>Branca</option>
+                    <option>Preta</option>
+                    <option>Parda</option>
+                    <option>Amarela</option>
+                    <option>Indígena</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="est_civil">Estado Civil:</label>
+                <select id="est_civil">
+                    <option>Solteiro</option>
+                    <option>Casado</option>
+                    <option>Divorciado</option>
+                    <option>Viúvo</option>
+                    <option>Separado judicialmente</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="religiao">Religião:</label>
+                <input type="text" id="religiao" name="religiao" list="religioes">
+                <datalist id="religioes">
+                    <option value="Ateísmo">
+                    <option value="Agnosticismo">
+                    <option value="Cristianismo">
+                    <option value="Islamismo">
+                    <option value="Judaísmo">
+                    <option value="Budismo">
+                    <option value="Hinduísmo">
+                    <option value="Espiritismo">
+                    <option value="Candomblé">
+                    <option value="Umbanda">
+                    <option value="Outra">
+                </datalist>
+            </p>
+
+            <p>
+                <label for="escolaridade">Escolaridade:</label>
+                <input type="text" id="escolaridade" name="escolaridade">
+            </p>
+
+            <p>
+                <label for="profissao">Profissão:</label>
+                <input type="text" id="profissao" name="profissao">
+                <datalist id="profissoes">
+                    <option value="Desenvolvedor de software">
+                    <option value="Médico">
+                    <option value="Professor">
+                    <option value="Engenheiro">
+                    <option value="Advogado">
+                    <option value="Designer gráfico">
+                    <option value="Analista de dados">
+                    <option value="Cientista de dados">
+                    <option value="Arquiteto">
+                    <option value="Enfermeiro">
+                </datalist>
+            </p>
+
+            <p>
+                <label for="ocupacao">Ocupação/Local de trabalho:</label>
+                <input type="text" id="ocupacao" name="ocupacao">
+            </p>
+
+            <p>
+                <label for="naturalidade">Naturalidade:</label>
+                <input type="text" id="naturalidade" name="naturalidade">
+            </p>
+
+            <p>
+                <label for="procedencia">Procedencia:</label>
+                <textarea id="procedencia" name="procedencia"></textarea>
+            </p>
+
+            <p>
+                <label for="residencia">Residencia:</label>
+                <textarea id="residencia" name="residencia"></textarea>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Queixa principal/HDA</legend>
+            <p>
+                <label for="queixa">Queixa Principal:</label>
+                <input type="text" id="queixa" name="queixa">
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Antecedentes pessoais</legend>
+            <p>
+                <label for="alergias">Alergias:</label><br>
+                <textarea id="alergias" name="alergias"></textarea>
+            </p>
+
+            <p>
+                <label for="medicamentos">Medicamentos:</label><br>
+                <textarea id="medicamentos" name="medicamentos"></textarea>
+            </p>
+
+            <p>
+                <label for="doencas_anteriores">Doenças anteriores:</label><br>
+                <textarea id="doencas_anteriores" name="doencas_anteriores"></textarea>
+            </p>
+
+            <p>
+                <label for="procedimentos">Cirurgias/transfusões realizadas:</label><br>
+                <textarea id="procedimentos" name="procedimentos"></textarea><br><br>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Antecedentes Sociais</legend>
+            <p>
+                <label for="renda">Renda:</label><br>
+                <textarea id="renda" name="renda"></textarea>
+            </p>
+            <p>
+                <label for="sobre_ocupacao">Condições trabalho/escola:</label><br>
+                <textarea id="sobre_ocupacao" name="sobre_ocupacao"></textarea>
+            </p>
+            <p>
+                <label for="sobre_moradia">Condições de moradia:</label> <br>
+                <textarea id="sobre_moradia" name="sobre_moradia"></textarea>
+
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Hábitos de Vida</legend>
+            <p>
+                <label for="alimentacao">Alimentação:</label><br>
+                <textarea id="alimentacao" name="alimentacao"></textarea>
+            </p>
+
+            <p>
+                <label for="atividade_fisica">Atividade física:</label><br>
+                <textarea id="atividade_fisica" name="atividade_fisica"></textarea>
+            </p>
+
+            <p>
+                <label for="alcool_drogas">Álcool, tabagismo e outras drogas:</label><br>
+                <textarea id="alcool_drogas" name="alcool_drogas"></textarea>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Interrogatório Sintomatológico</legend>
+
+            ...
+        </fieldset>
+
+        <fieldset>
+            <legend>Dados Antropométricos:</legend>
+            <p>
+                <label for="peso">Peso (kg):</label>
+                <input type="number" id="peso" name="peso">
+            </p>
+
+            <p>
+                <label for="altura">Altura (m):</label>
+                <input type="number" id="altura" name="altura">
+            </p>
+
+            <p>IMC calculado: <output name="imc" id="imc">...</output></p>
+
+        </fieldset>
+    </form>
+    <div>
+        <p>Referências:</p>
+        <ul><li>Porto - Exame Clínico 8ª ed.</li></ul>
+    </div>
+    <script>
+        const dataNascimentoInput = document.getElementById('data_nascimento');
+        const idadeOutput = document.getElementById('idade');
+        const pesoInput = document.getElementById('peso');
+        const alturaInput = document.getElementById('altura');
+        const imcOutput = document.getElementById('imc');
+
+        function calcularIdade(dataNascimento) {
+            const dataNascimentoObj = new Date(dataNascimento);
+            const hoje = new Date();
+
+            let idadeAnos = hoje.getFullYear() - dataNascimentoObj.getFullYear();
+            let idadeMeses = hoje.getMonth() - dataNascimentoObj.getMonth();
+            let idadeDias = hoje.getDate() - dataNascimentoObj.getDate();
+
+            if (idadeMeses < 0 || (idadeMeses === 0 && idadeDias < 0)) {
+                idadeAnos--;
+                idadeMeses += 12;
+            }
+
+            if (idadeDias < 0) {
+                const ultimoDiaDoMesAnterior = new Date(hoje.getFullYear(), hoje.getMonth(), 0).getDate();
+                idadeDias += ultimoDiaDoMesAnterior;
+                idadeMeses--;
+            }
+
+            return {
+                anos: idadeAnos,
+                meses: idadeMeses,
+                dias: idadeDias,
+            };
+        }
+
+        function calcularTextoIdade() {
+            const idade = calcularIdade(dataNascimentoInput.value);
+
+            idadeOutput.innerText = `${idade.anos} anos, ${idade.meses} meses e ${idade.dias} dias`;
+        }
+
+        function calcularIMC() {
+            const peso = parseFloat(pesoInput.value);
+            const altura = parseFloat(alturaInput.value);
+
+            if (!isNaN(peso) && !isNaN(altura) && altura > 0) {
+                const imc = peso / (altura * altura);
+                imcOutput.innerText = imc.toFixed(2);
+                // Adiciona cores com base nos valores de referência
+                imcOutput.style.color = null;
+                const idade = calcularIdade(dataNascimentoInput.value).anos
+                if (idade >= 18 && idade < 60) {
+                    if (imc < 18.5) {
+                        imcOutput.style.color = 'blue'; // Abaixo do peso
+                    } else if (imc < 25) {
+                        imcOutput.style.color = 'green'; // Peso normal
+                    } else if (imc < 30) {
+                        imcOutput.style.color = 'orange'; // Sobrepeso
+                    } else {
+                        imcOutput.style.color = 'red'; // Obesidade
+                    }
+                } else {
+                    // todo idoso
+                }
+            } else {
+                imcOutput.innerText = '...';
+            }
+        }
+
+        function calcularDados() {
+            calcularTextoIdade()
+            calcularIMC()
+        }
+
+
+        dataNascimentoInput.addEventListener('input', calcularDados);
+        dataNascimentoInput.addEventListener('change', calcularDados);
+        pesoInput.addEventListener('input', calcularDados);
+        pesoInput.addEventListener('change', calcularDados);
+        alturaInput.addEventListener('input', calcularDados);
+        alturaInput.addEventListener('change', calcularDados);
+    </script>
+</body>
+</html>
