@@ -1,15 +1,38 @@
+function generateIsda() {
+    const sintomasIsda = {
+        nega_febre: "Nega febre",
+        nega_astenia: "Nega astenia",
+        nega_alteracao_peso: "Nega alteração de peso",
+        nega_sudorese: "Nega sudorese",
+        nega_calafrios: "Nega calafrios",
+        nega_caibras: "Nega cãibras",
+    };
 
-const dataNascimentoInput = document.getElementById('data_nascimento');
-const idadeInput = document.getElementById('idade');
-const pesoInput = document.getElementById('peso');
-const alturaInput = document.getElementById('altura');
-const imcOutput = document.getElementById('imc');
-const dataHoraAtend = document.getElementById('data_hora_atendimento');
-const usarHoraAgora = document.getElementById('usar_hora_agora');
-const anamneseForm = document.getElementById('anamnese')
-const exportarButton = document.getElementById('exportar');
+    const generated_isda_fields = document.getElementById("generated_isda_fields");
 
-function calcularIdade(referencia, dataNascimento) {
+    for (const id in sintomasIsda) {
+        const nome = sintomasIsda[id];
+        const divFormGroup = document.createElement("div");
+        divFormGroup.className = "form-check"
+
+        const input = document.createElement("input");
+        input.className = "form-check-input";
+        input.setAttribute("type", "checkbox");
+        input.setAttribute("id", `isda_${id}`);
+        input.setAttribute("name", `isda_${id}`);
+
+        const label = document.createElement("label");
+        label.className = "form-check-label";
+        label.setAttribute("for", `isda_${id}`);
+        label.textContent = nome;
+
+        divFormGroup.appendChild(input);
+        divFormGroup.appendChild(label);
+        generated_isda_fields.appendChild(divFormGroup);
+    }
+}
+
+function calculateAge(referencia, dataNascimento) {
     const dataNascimentoObj = new Date(dataNascimento);
     const hoje = new Date(referencia)
 
@@ -28,84 +51,100 @@ function calcularIdade(referencia, dataNascimento) {
         idadeMeses--;
     }
 
-    return {
-        anos: idadeAnos,
-        meses: idadeMeses,
-        dias: idadeDias,
-    };
+    return { anos: idadeAnos, meses: idadeMeses, dias: idadeDias };
 }
 
-function getDataHoraAtendimento() {
-    return dataHoraAtend.valueAsDate;
-}
+$(function () {
+    generateIsda();
 
-function calcularTextoIdade() {
-    const idade = calcularIdade(getDataHoraAtendimento(), dataNascimentoInput.value);
+    const dataNascimentoInput = document.getElementById('data_nascimento');
+    const idadeInput = document.getElementById('idade');
+    const pesoInput = document.getElementById('peso');
+    const alturaInput = document.getElementById('altura');
+    const imcOutput = document.getElementById('imc');
+    const dataHoraAtend = document.getElementById('data_hora_atendimento');
+    const usarHoraAgora = document.getElementById('usar_hora_agora');
+    const anamneseForm = document.getElementById('anamnese')
+    const exportarButton = document.getElementById('exportar');
 
-    if (isNaN(idade.anos)) return;
-    idadeInput.value = `${idade.anos} anos, ${idade.meses} meses e ${idade.dias} dias`;
-}
 
-function calcularIMC() {
-    const peso = parseFloat(pesoInput.value);
-    const altura = parseFloat(alturaInput.value);
-
-    if (!isNaN(peso) && !isNaN(altura) && altura > 0) {
-        const imc = peso / (altura * altura);
-        imcOutput.innerText = imc.toFixed(2);
-        // Adiciona cores com base nos valores de referência
-        imcOutput.style.color = null;
-
-        const idade = calcularIdade(dataNascimentoInput.value).anos
-        if (idade >= 18 && idade < 60) {
-            if (imc < 18.5) {
-                imcOutput.style.color = 'blue'; // Abaixo do peso
-            } else if (imc < 25) {
-                imcOutput.style.color = 'green'; // Peso normal
-            } else if (imc < 30) {
-                imcOutput.style.color = 'orange'; // Sobrepeso
-            } else {
-                imcOutput.style.color = 'red'; // Obesidade
-            }
-        } else {
-            // todo idoso
-        }
-    } else {
-        imcOutput.innerText = '...';
+    function getDataHoraAtendimento() {
+        return dataHoraAtend.valueAsDate;
     }
-}
 
-function calcularDados() {
-    calcularTextoIdade()
-    calcularIMC()
-}
+    function generateAgeText() {
+        const idade = calculateAge(getDataHoraAtendimento(), dataNascimentoInput.value);
 
-function calculeHoraAgora() {
-    const dateNow = new Date();
-    dateNow.setMinutes(dateNow.getMinutes() - dateNow.getTimezoneOffset());
-    dataHoraAtend.value = dateNow.toISOString().substring(0, 16);
-}
+        if (isNaN(idade.anos)) return;
+        idadeInput.value = `${idade.anos} anos, ${idade.meses} meses e ${idade.dias} dias`;
+    }
 
-function abrirExportar() {
-    const obj = {}
-    new FormData(anamneseForm).forEach((value, key) => {
-        obj[key] = value;
-    });
-    const json = JSON.stringify(obj);
+    function generateBmiValue() {
+        const peso = parseFloat(pesoInput.value);
+        const altura = parseFloat(alturaInput.value);
 
-    const blob = new Blob([json], {type: "application/json"});
-    const url = URL.createObjectURL(blob);
-    window.open(url);
-}
+        if (!isNaN(peso) && !isNaN(altura) && altura > 0) {
+            const imc = peso / (altura * altura);
+            let textoFinal = imc.toFixed(2);
+            imcOutput.style.color = null;
 
-calcularDados();
+            const idade = calculateAge(getDataHoraAtendimento(), dataNascimentoInput.value).anos
+            if (idade >= 18 && idade < 60) {
+                if (imc < 18.5) { // Abaixo do peso
+                    imcOutput.style.color = 'blue';
+                    textoFinal += " (abaixo)";
+                } else if (imc < 25) { // Peso normal
+                    imcOutput.style.color = 'green';
+                    textoFinal += " (normal)"
+                } else if (imc < 30) { // Sobrepeso
+                    imcOutput.style.color = 'orange';
+                    textoFinal += " (sobrepeso)"
+                } else { // Obesidade
+                    imcOutput.style.color = 'red';
+                    textoFinal += " (obesidade)"
+                }
+            } else {
+                // todo idoso
+            }
 
-dataNascimentoInput.addEventListener('input', calcularDados);
-dataNascimentoInput.addEventListener('change', calcularDados);
-pesoInput.addEventListener('input', calcularDados);
-pesoInput.addEventListener('change', calcularDados);
-alturaInput.addEventListener('input', calcularDados);
-alturaInput.addEventListener('change', calcularDados);
-dataHoraAtend.addEventListener('change', calcularDados);
-usarHoraAgora.addEventListener('click', calculeHoraAgora);
-exportarButton.addEventListener('click', abrirExportar);
+            imcOutput.innerText = textoFinal;
+        } else {
+            imcOutput.innerText = '...';
+        }
+    }
+
+    function recalculateGeneratedData() {
+        generateAgeText()
+        generateBmiValue()
+    }
+
+    function calculeHoraAgora() {
+        const dateNow = new Date();
+        dateNow.setMinutes(dateNow.getMinutes() - dateNow.getTimezoneOffset());
+        dataHoraAtend.value = dateNow.toISOString().substring(0, 16);
+    }
+
+    function abrirExportar() {
+        const obj = {}
+        new FormData(anamneseForm).forEach((value, key) => {
+            obj[key] = value;
+        });
+        const json = JSON.stringify(obj);
+
+        const blob = new Blob([json], {type: "application/json"});
+        const url = URL.createObjectURL(blob);
+        window.open(url);
+    }
+
+    recalculateGeneratedData();
+
+    dataNascimentoInput.addEventListener('input', recalculateGeneratedData);
+    dataNascimentoInput.addEventListener('change', recalculateGeneratedData);
+    pesoInput.addEventListener('input', recalculateGeneratedData);
+    pesoInput.addEventListener('change', recalculateGeneratedData);
+    alturaInput.addEventListener('input', recalculateGeneratedData);
+    alturaInput.addEventListener('change', recalculateGeneratedData);
+    dataHoraAtend.addEventListener('change', recalculateGeneratedData);
+    usarHoraAgora.addEventListener('click', calculeHoraAgora);
+    exportarButton.addEventListener('click', abrirExportar);
+});

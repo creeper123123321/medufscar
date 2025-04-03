@@ -3,54 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+          integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.slim.min.js"
+            integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj+KsslFkCOt3TvJrX2AV/Gc3wOqA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="es2_anamnese.js"></script>
+    <title>Formulário de exame clínico</title>
 </head>
 <body>
-    <h1>Formulário de Anamnese</h1>
+<div class="container">
+    <h1>Formulário de exame clínico</h1>
     <form onsubmit="return false" id="anamnese">
         <fieldset>
             <legend>Atendimento</legend>
-            <p>
-                <label for="data_hora_atendimento">Data/hora:</label>
-                <input type="datetime-local" id="data_hora_atendimento" name="data_hora_atendimento">
-                <button id="usar_hora_agora">Usar hora atual</button>
-            </p>
+            <div>
+                <label for="data_hora_atendimento" class="form-label">Data/hora:</label>
+                <input type="datetime-local" id="data_hora_atendimento" name="data_hora_atendimento"
+                       class="form-control">
+                <button id="usar_hora_agora" class="form-control">Usar hora atual</button>
+            </div>
         </fieldset>
         <fieldset>
             <legend>Identificação</legend>
-            <p><label for="nome">Nome Civil:</label>
-                <input type="text" id="nome" name="nome"></p>
-            <p><label for="nome_social">Nome Social:</label>
-                <input type="text" id="nome_social" name="nome_social"></p>
-            <p><label for="data_nascimento">Data de nascimento:</label>
-                <input type="date" id="data_nascimento" name="data_nascimento"></p>
-            <p><label for="idade">Idade: </label>
-                <input type="text" id="idade" name="idade"></p>
-            <p>
-                <label for="sexo">Sexo:</label>
-                <select id="sexo">
+            <div class="input-group mb-3">
+                <label for="nome_civil" class="input-group-text">Nome Civil</label>
+                <input type="text" id="nome_civil" name="nome_civil" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <label for="nome_social" class="input-group-text">Nome Social</label>
+                <input type="text" id="nome_social" name="nome_social" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <label for="data_nascimento" class="input-group-text">Data de nascimento</label>
+                <input type="date" id="data_nascimento" name="data_nascimento" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <label for="idade" class="input-group-text">Idade</label>
+                <input type="text" id="idade" name="idade" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <label for="sexo" class="input-group-text">Sexo</label>
+                <select id="sexo" class="form-control">
                     <option>Masculino</option>
                     <option>Feminino</option>
                     <option>Não-binário</option>
                     <option>Ignorado</option>
                 </select>
-            </p>
-            <p>
-                <label for="genero">Gênero:</label>
-                <input type="text" id="genero" name="genero" list="generos" value="">
-
+            </div>
+            <div class="input-group mb-3">
+                <label for="genero" class="input-group-text">Gênero</label>
+                <input type="text" id="genero" name="genero" list="generos" value="" class="form-control">
                 <datalist id="generos">
                     <option>Homem cis</option>
                     <option>Mulhes cis</option>
                     <option>Homem trans</option>
                     <option>Mulher trans</option>
+                    <option>Travesti</option>
                     <option>Não-binário</option>
                     <option>Não declarado</option>
                 </datalist>
-            </p>
+            </div>
 
-            <p>
-                <label for="cor">Raça/cor:</label>
-                <select id="cor">
+            <div class="input-group mb-3">
+                <label for="cor" class="input-group-text">Raça/cor:</label>
+                <select id="cor" class="form-control">
                     <option>Não declarada</option>
                     <option>Branca</option>
                     <option>Preta</option>
@@ -58,22 +76,22 @@
                     <option>Amarela</option>
                     <option>Indígena</option>
                 </select>
-            </p>
+            </div>
 
-            <p>
-                <label for="est_civil">Estado Civil:</label>
-                <select id="est_civil">
+            <div class="input-group mb-3">
+                <label for="est_civil" class="input-group-text">Estado Civil:</label>
+                <select id="est_civil" class="form-control">
                     <option>Solteiro</option>
                     <option>Casado</option>
                     <option>Divorciado</option>
                     <option>Viúvo</option>
                     <option>Separado judicialmente</option>
                 </select>
-            </p>
+            </div>
 
-            <p>
-                <label for="religiao">Religião:</label>
-                <input type="text" id="religiao" name="religiao" list="religioes">
+            <div class="input-group mb-3">
+                <label for="religiao" class="input-group-text">Religião:</label>
+                <input type="text" id="religiao" name="religiao" list="religioes" class="form-control">
                 <datalist id="religioes">
                     <option value="Ateísmo">
                     <option value="Agnosticismo">
@@ -87,16 +105,33 @@
                     <option value="Umbanda">
                     <option value="Outra">
                 </datalist>
-            </p>
+            </div>
 
             <p>
                 <label for="escolaridade">Escolaridade:</label>
-                <input type="text" id="escolaridade" name="escolaridade">
+                <input type="text" id="escolaridade" name="escolaridade" list="escolaridades">
+
+                <datalist id="escolaridades">
+                    <option value="Ensino Fundamental Incompleto">
+                    <option value="Ensino Fundamental Completo">
+                    <option value="Ensino Médio Incompleto">
+                    <option value="Ensino Médio Completo">
+                    <option value="Ensino Técnico Incompleto">
+                    <option value="Ensino Técnico Completo">
+                    <option value="Ensino Superior Incompleto">
+                    <option value="Ensino Superior Completo">
+                    <option value="Pós-graduação Incompleta">
+                    <option value="Pós-graduação Completa">
+                    <option value="Mestrado Incompleto">
+                    <option value="Mestrado Completo">
+                    <option value="Doutorado Incompleto">
+                    <option value="Doutorado Completo">
+                </datalist>
             </p>
 
             <p>
                 <label for="profissao">Profissão:</label>
-                <input type="text" id="profissao" name="profissao">
+                <input type="text" id="profissao" name="profissao" list="profissoes">
                 <datalist id="profissoes">
                     <option value="Desenvolvedor de software">
                     <option value="Médico">
@@ -118,17 +153,28 @@
 
             <p>
                 <label for="naturalidade">Naturalidade:</label>
-                <input type="text" id="naturalidade" name="naturalidade">
+                <input type="text" id="naturalidade" name="naturalidade" list="naturalidades">
+                <datalist id="naturalidades">
+                    <option value="Cajuati/MG">
+                    <option value="Florealva/SP">
+                    <option value="São Carlos/SP">
+                    <option value="São Paulo/SP">
+                </datalist>
             </p>
 
             <p>
-                <label for="procedencia">Procedência:</label>
-                <input type="text" id="procedencia" name="procedencia"></input>
+                <label for="procedencia_local">Procedência Local:</label>
+                <input type="text" id="procedencia_local" name="procedencia_local">
             </p>
 
             <p>
-                <label for="residencia">Residência:</label>
-                <input type="text" id="residencia" name="residencia"></input>
+                <label for="procedencia_remota">Procedência Remota:</label>
+                <input type="text" id="procedencia_remota" name="procedencia_remota">
+            </p>
+
+            <p>
+                <label for="residencia">Residência(s):</label>
+                <input type="text" id="residencia" name="residencia">
             </p>
         </fieldset>
 
@@ -142,30 +188,18 @@
 
         <fieldset>
             <legend>Antecedentes pessoais</legend>
-            <p>
-                <label for="alergias">Alergias:</label><br>
-                <textarea id="alergias" name="alergias"></textarea>
-            </p>
-            <p>
-                <label for="medicamentos">Medicamentos:</label><br>
-                <textarea id="medicamentos" name="medicamentos"></textarea>
-            </p>
-            <p>
-                <label for="doencas_anteriores">Doenças/traumas anteriores:</label><br>
-                <textarea id="doencas_anteriores" name="doencas_anteriores"></textarea>
-            </p>
-            <p>
-                <label for="procedimentos">Cirurgias/transfusões realizadas:</label><br>
-                <textarea id="procedimentos" name="procedimentos"></textarea>
-            </p>
-            <p>
-                <label for="imunizacoes">Imunizações:</label><br>
-                <textarea id="imunizacoes" name="imunizacoes"></textarea>
-            </p>
-            <p>
-                <label for="gpac">Gestações, Partos, Abortos, Cesarianas</label>
-                <input type="text" id="gpac" name="gpac">
-            </p>
+            <p><label for="imunizacoes">Imunizações:</label><br>
+                <textarea id="imunizacoes" name="imunizacoes"></textarea></p>
+            <p><label for="alergias">Alergias:</label><br>
+                <textarea id="alergias" name="alergias"></textarea></p>
+            <p><label for="medicamentos">Medicamentos:</label><br>
+                <textarea id="medicamentos" name="medicamentos"></textarea></p>
+            <p><label for="doencas_anteriores">Doenças/traumas anteriores:</label><br>
+                <textarea id="doencas_anteriores" name="doencas_anteriores"></textarea></p>
+            <p><label for="procedimentos">Cirurgias/transfusões realizadas:</label><br>
+                <textarea id="procedimentos" name="procedimentos"></textarea></p>
+            <p><label for="gpac">Gestações, Partos, Abortos, Cesarianas</label>
+                <input type="text" id="gpac" name="gpac"></p>
         </fieldset>
 
         <fieldset>
@@ -206,33 +240,13 @@
             </p>
         </fieldset>
 
-        <fieldset>
+        <fieldset id="fieldset_isda">
             <legend>Interrogatório Sintomatológico</legend>
-            <p>
-                <label for="isda_nega_febre">Nega febre</label>
-                <input type="checkbox" id="isda_nega_febre" name="isda_nega_febre">
-            </p>
-            <p>
-                <label for="isda_nega_astenia">Nega astenia</label>
-                <input type="checkbox" id="isda_nega_astenia" name="isda_nega_astenia">
-            </p>
-            <p>
-                <label for="isda_nega_alteracao_peso">Nega alteração de peso</label>
-                <input type="checkbox" id="isda_nega_alteracao_peso" name="isda_nega_alteracao_peso">
-            </p>
-            <p>
-                <label for="isda_nega_sudorese">Nega sudorese</label>
-                <input type="checkbox" id="isda_nega_sudorese" name="isda_nega_sudorese">
-            </p>
-            <p>
-                <label for="isda_nega_calafrios">Nega calafrios</label>
-                <input type="checkbox" id="isda_nega_calafrios" name="isda_nega_calafrios">
-            </p>
-            <p>
-                <label for="isda_nega_caibras">Nega cãibras</label>
-                <input type="checkbox" id="isda_nega_caibras" name="isda_nega_caibras">
-            </p>
-            ...
+            <div id="generated_isda_fields"></div>
+            <div>
+                <label for="isda_observacoes" class="form-label">Observações do ISDA</label>
+                <textarea id="isda_observacoes" name="isda_observacoes" class="form-control"></textarea>
+            </div>
         </fieldset>
 
         <fieldset>
@@ -247,19 +261,23 @@
                 <input type="number" id="altura" name="altura">
             </p>
 
-            <p>IMC calculado: <output name="imc" id="imc">...</output></p>
+            <p>IMC calculado:
+                <output name="imc" id="imc">...</output>
+            </p>
 
             <p>
                 <label for="circ_abdominal">Circunferência Abdominal (cm):</label>
                 <input type="number" id="circ_abdominal" name="circ_abdominal">
             </p>
         </fieldset>
-        <button id="exportar">Exportar</button>
+        <button id="exportar" class="form-control">Exportar</button>
     </form>
     <div>
         <p>Referências:</p>
-        <ul><li>Porto - Exame Clínico 8ª ed.</li></ul>
+        <ul>
+            <li>Porto - Exame Clínico 8ª ed.</li>
+        </ul>
     </div>
-    <script src="es2_anamnese.js"></script>
+</div>
 </body>
 </html>
